@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Plate
 
-# Register your models here.
+
+class PlateAdmin(admin.ModelAdmin):
+    list_display = ('plateNumber', 'street', 'zipCode', 'city')
+
+
+admin.site.register(Plate, PlateAdmin)

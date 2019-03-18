@@ -1,0 +1,7 @@
+<h1>Diplomat Vehicle from:</h1>
+<ul>
+    {% for plate in plates %}
+        <li>{{ plate.plateNumber }}</li>
+        <li>{{ plate.street }}, {{ plate.zipCode }}, {{ plate.city }}</li>
+    {% endfor %}
+</ul>
