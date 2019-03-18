@@ -1,8 +1,22 @@
-<h1>Diplomat Vehicle from:</h1>
-<ul>
-    {% for plate in plates %}
-        <li>{{ plate.created_at}}</li>
-        <li>{{ plate.plateNumber }}</li>
-        <li>{{ plate.street }}, {{ plate.zipCode }}, {{ plate.city }}</li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Diplomat Vehicle last seen:</h1>
+    <div class="row">
+        {% for plate in plates %}
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ plate.plateNumber }}</h5>
+                    <h5 class="card-title">{{ plate.created_at }}</h5>
+                    <p class="card-text">
+                        {{ plate.street}}, {{ plate.zipCode }}, {{ plate.city}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary" href="/new">Add a Plate</a>
+{% endblock %}
+
