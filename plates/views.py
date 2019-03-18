@@ -1,10 +1,20 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from datetime import timezone
+from django.shortcuts import render, redirect
 from .models import Plate
+from .forms import PlateForm
+
 
 def index(request):
     plates = Plate.objects.all()
     return render(request, 'index.html', {'plates': plates})
 
-def new(requst):
-    return HttpResponse('New Plate')
+
+def new(request):
+    if request.method == "POST":
+        form = PlateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/plates/')
+    else:
+        form = PlateForm()
+    return render(request, 'edit.html', {'form': form})
