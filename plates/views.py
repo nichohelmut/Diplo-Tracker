@@ -13,8 +13,11 @@ def new(request):
     if request.method == "POST":
         form = PlateForm(request.POST)
         if form.is_valid():
-            form.save()
+            plate = form.save(commit=False)
+            plate.counter += int(1)
+            plate.save()
             return redirect('/plates/')
     else:
         form = PlateForm()
     return render(request, 'edit.html', {'form': form})
+
