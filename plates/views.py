@@ -14,10 +14,13 @@ def new(request):
         form = PlateForm(request.POST)
         if form.is_valid():
             plate = form.save(commit=False)
-            plate.counter += int(1)
+            # Plate.objects.last().counter + 1
+            # plate.counter += int(1)
             plate.save()
-            return redirect('/plates/')
+            return redirect('root')
     else:
         form = PlateForm()
     return render(request, 'edit.html', {'form': form})
 
+# import plate models for usage in shell
+# from plates.models import Plate

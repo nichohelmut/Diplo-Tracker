@@ -7,4 +7,4 @@ class Plate(models.Model):
         street = models.CharField(max_length=255)
         zipCode = models.IntegerField()
         city = models.TextField(max_length=100)
-        counter = models.IntegerField()
+        counter = models.IntegerField(null=True)
