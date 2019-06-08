@@ -14,7 +14,7 @@ def new(request):
         form = PlateForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/plates/')
+            return redirect('/')
     else:
         form = PlateForm()
     return render(request, 'edit.html', {'form': form})
