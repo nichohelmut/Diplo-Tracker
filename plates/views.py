@@ -18,3 +18,6 @@ def new(request):
     else:
         form = PlateForm()
     return render(request, 'edit.html', {'form': form})
+
+def overview(request):
+    return render(request, 'overview.html')
